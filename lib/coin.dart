@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class Coin extends StatefulWidget {
@@ -6,22 +8,27 @@ class Coin extends StatefulWidget {
 }
 
 class _CoinState extends State<Coin> {
+  int flip = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset('assets/images/0.png'),
-        Text(
-          'head or Tail',
+        Image.asset('assets/images/$flip.png'),
+        /*Text(
+          '',
           style: TextStyle(
             color: Colors.white,
             fontSize: 25,
             fontWeight: FontWeight.bold,
           ),
-        ),
-        SizedBox(height: 150),
+        ),*/
+        SizedBox(height: 100),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              flip = Random().nextInt(2);
+            });
+          },
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.blueGrey[900]),
             shadowColor: MaterialStateProperty.all(Colors.grey),
